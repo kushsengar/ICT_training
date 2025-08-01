@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Add Customer</title>
+</head>
+<body>
+  <h2>Add New Customer</h2>
+  <form method="POST">
+    {% csrf_token %}
+    <label>Name:</label><br>
+    <input type="text" name="name" required><br><br>
+
+    <label>Mobile:</label><br>
+    <input type="text" name="mobile" required><br><br>
+
+    <label>Email:</label><br>
+    <input type="email" name="email" required><br><br>
+
+    <label>Address:</label><br>
+    <textarea name="address" required></textarea><br><br>
+
+    <button type="submit">Save & Continue to Order</button>
+  </form>
+  <br><br>
+  <a href="{% url 'home_inventory' %}">🔗 Go to Inventory</a>
+  <a href="{% url 'order_create' %}">🔗 Go to Order</a>
+</body>
+</html>

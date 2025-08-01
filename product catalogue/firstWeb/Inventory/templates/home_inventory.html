@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Inventory</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f4;
+        }
+        h1 {
+            color: #333;
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input, button {
+            padding: 8px;
+            margin-right: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #5c67f2;
+            color: white;
+            border: none;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+            background-color: white;
+        }
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ccc;
+            text-align: left;
+        }
+        a {
+            text-decoration: none;
+            color: #5c67f2;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 style="font-family:Georgia, 'Times New Roman', Times, serif;">📝 Product Inventory</h1>
+     <br><br>
+     <h2 style="font-family: Georgia, 'Times New Roman', Times, serif;">Enter Product Details</h2>
+    <form method="POST" action="{% url 'home_inventory' %}">
+        {% csrf_token %}
+        <input type="text" name="name" placeholder="Enter product name :" required>
+        <input type="text" name="quantity" placeholder="Enter quantity :" required>
+        <input type="text" name="price" placeholder="Enter price :" required>
+        <input type="text" name="discount" placeholder="Enter discount :" required>
+        <button type="submit">Add Product</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Price</th>
+            <th>Discount</th>
+            <th>Actions</th>
+        </tr>
+        {% for i in data %}
+        <tr>
+            <td>{{ i.name }}</td>
+            <td>{{ i.quantity }}</td>
+            <td>{{ i.price }}</td>
+            <td>{{i.discount}}</td>
+            <td>
+                <a href="{% url 'edit' i.id %}">Edit</a> |
+                <a href="{% url 'delete' i.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</body>
+</html>
