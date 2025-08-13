@@ -1,0 +1,29 @@
+<!-- templates/add_product.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Product</title>
+    <style>
+        body { font-family: Arial; background: #f7f7f7; padding: 50px; }
+        .form-container {
+            max-width: 500px; margin: auto; padding: 20px;
+            background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        input, textarea {
+            width: 100%; margin-bottom: 10px; padding: 10px;
+            border: 1px solid #ccc; border-radius: 5px;
+        }
+        .btn { background: #4CAF50; color: white; padding: 10px 20px; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Add New Product</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn" type="submit">Save Product</button>
+        </form>
+    </div>
+</body>
+</html>

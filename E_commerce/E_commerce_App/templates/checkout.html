@@ -1,0 +1,25 @@
+<!-- templates/checkout.html -->
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<h2>Checkout</h2>
+
+<h3>Review Your Items:</h3>
+<ul>
+    {% for item in cart_items %}
+        <li>
+            {{ item.product.name }} (x{{ item.quantity }}) - ₹{{ item.product.price }}
+        </li>
+    {% endfor %}
+</ul>
+<p><strong>Total:</strong> ₹{{ total }}</p>
+
+<hr>
+<form method="post">
+    {% csrf_token %}
+    <label><strong>Select Payment Method:</strong></label><br>
+    <input type="radio" name="payment_method" value="card" required> Card<br>
+    <input type="radio" name="payment_method" value="upi" required> UPI<br><br>
+    <button type="submit">Confirm & Pay</button>
+</form>
+{% endblock %}

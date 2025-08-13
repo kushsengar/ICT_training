@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+    <style>
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .btn {
+            padding: 15px 30px;
+            font-size: 18px;
+            margin: 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .seller { background-color: #007bff; color: white; }
+        .buyer { background-color: #28a745; color: white; }
+        .btn:hover { opacity: 0.9; }
+    </style>
+</head>
+<body>
+    <h1>Welcome {{ user.username }}</h1>
+    <a href="{% url 'seller_home' %}" class="btn seller">Seller</a>
+    <a href="{% url 'buyer_home' %}" class="btn buyer">Buyer</a>
+</body>
+</html>

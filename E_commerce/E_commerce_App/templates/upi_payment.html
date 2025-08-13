@@ -1,0 +1,14 @@
+<!-- templates/upi_payment.html -->
+{% extends 'base.html' %}
+{% load static %} 
+{% block content %}
+<h2>Scan to Pay via UPI</h2>
+
+<p><strong>Total:</strong> ₹{{ total }}</p>
+<p>Please scan the QR code below using your UPI app to complete the payment.</p>
+
+<img src="{% static 'WhatsApp Image 2025-08-05 at 12.07.55_af90311f.jpg' %}" alt="UPI QR Code" width="300">
+
+<p>After payment, please keep a screenshot as proof.</p>
+<a href="{% url 'buyer_home' %}">Back to Home</a>
+{% endblock %}

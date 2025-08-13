@@ -1,0 +1,12 @@
+<!-- templates/invoice.html -->
+{% extends 'base.html' %}
+{% block content %}
+<h2>Invoice</h2>
+
+<p><strong>Payment Successful!</strong></p>
+<p><strong>Total Paid:</strong> ₹{{ total }}</p>
+<p><strong>Payment Mode:</strong> {{ method|title }}</p>
+
+<p>Thank you for shopping with us!</p>
+<a href="{% url 'buyer_portal' %}">Back to Shopping</a>
+{% endblock %}

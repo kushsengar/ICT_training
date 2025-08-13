@@ -1,0 +1,15 @@
+<h2>Login with Mobile OTP</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Get OTP</button>
+</form>
+
+{% if not_registered %}
+    <p>You are not registered with us.</p>
+    <a href="{% url 'signup' %}">Click here to Sign Up</a>
+{% endif %}
+
+{% for message in messages %}
+    <p style="color: red;">{{ message }}</p>
+{% endfor %}

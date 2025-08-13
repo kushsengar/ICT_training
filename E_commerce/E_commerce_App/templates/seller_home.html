@@ -1,0 +1,39 @@
+<!-- templates/seller_home.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Seller Dashboard</title>
+    <style>
+        body { font-family: Arial; background: #f0f0f5; padding: 20px; }
+        h1 { text-align: center; color: #333; }
+        .btn { padding: 10px 20px; background: #4CAF50; color: white; text-decoration: none; border-radius: 5px; }
+        .card {
+            width: 300px; padding: 15px; margin: 15px; float: left;
+            background: white; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .card img { max-width: 100%; height: auto; border-radius: 5px; }
+        .actions a { margin-right: 10px; color: #2196F3; }
+    </style>
+</head>
+<body>
+    <h1>Welcome Seller</h1>
+    <div style="text-align:center;"><a class="btn" href="{% url 'add_product' %}">Add New Product</a></div>
+    <div style="display:flex; flex-wrap:wrap; justify-content:center;">
+        {% for product in products %}
+            <div class="card">
+                <img src="{{ product.image.url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>Price: ₹{{ product.price }}</p>
+                <p>Discount: {{ product.discount }}%</p>
+                <p><strong>Final: ₹{{ product.discounted_price }}</strong></p>
+                <div class="actions">
+                    <a href="{% url 'edit_product' product.pk %}">Edit</a>
+                    <a href="{% url 'delete_product' product.pk %}">Delete</a>
+                </div>
+            </div>
+        {% empty %}
+            <p>No products added yet.</p>
+        {% endfor %}
+    </div>
+</body>
+</html>
